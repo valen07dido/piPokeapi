@@ -1,7 +1,12 @@
-function EstructureadoApi(data) {
-  const { name, height, types, sprites, stats, weight } = data;
-  const img = sprites.other["official-artwork"].front_default;
-  const type = types[0].type.name;
+function EstructuradoApi(data) {
+  const { id, name, height, types, sprites, stats, weight } = data;
+  // const img = sprites.other["official-artwork"].front_default
+  const img = sprites.other.home.front_default;
+  const tipos = [];
+  types.forEach((type) => {
+    console.log(type);
+    tipos.push(type.type.name);
+  });
   let estadisticas = stats.reduce((obj, estadistica) => {
     obj[estadistica.stat.name] = estadistica.base_stat;
     return obj;
@@ -11,9 +16,10 @@ function EstructureadoApi(data) {
   const defensa = estadisticas.defense;
   const velocidad = estadisticas.speed;
   const pokemon = {
+    id,
     name,
     height,
-    type,
+    tipos,
     img,
     vida,
     ataque,
@@ -21,7 +27,7 @@ function EstructureadoApi(data) {
     velocidad,
     weight,
   };
-  return pokemon
+  return pokemon;
 }
 
-module.exports=EstructureadoApi
+module.exports = EstructuradoApi;

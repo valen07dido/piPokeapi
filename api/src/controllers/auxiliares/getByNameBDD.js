@@ -1,8 +1,15 @@
-const { Pokemon } = require("../../db");
+const { Pokemon, Type } = require("../../db");
 const GetbyNameBDD = async (nombre) => {
     try {
       const pokeDato = await Pokemon.findAll({
-        where: { name: nombre }, // Aquí es donde se hizo el cambio
+        where: { name: nombre }, 
+        include: [
+          {
+            model: Type,
+            attributes: ["id", "nombre"],
+            through: { attributes: [] },
+          },
+        ],
       });
   
       if (pokeDato && pokeDato.length > 0) {
@@ -11,8 +18,7 @@ const GetbyNameBDD = async (nombre) => {
         throw new Error("No se encontró ningún Pokémon con ese nombre.");
       }
     } catch (error) {
-      console.error(error);
-      return null;
+     return null;
     }
   };
   
