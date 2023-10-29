@@ -4,10 +4,13 @@ const { Router } = require('express');
 const GetAllPokemons=require ('../controllers/GetAllPokemons')
 const GetPokemonById=require('../controllers/GetPokemonById')
 const PostPokemon=require('../controllers/PostPokemon')
+const GetAllTypes=require('../controllers/GetAllTypes')
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
+
+router.get('/types',GetAllTypes)
 router.get('/',GetAllPokemons)
 router.get('/:id',GetPokemonById)
 router.post('/',PostPokemon)
