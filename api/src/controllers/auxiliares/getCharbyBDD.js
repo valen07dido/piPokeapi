@@ -5,15 +5,27 @@ const getCharbyBDD = async () => {
     include: [
       {
         model: Type,
-        attributes: ["id", "nombre"],
+        attributes: [ "nombre"],
         through: { attributes: [] },
       },
     ],
   });
+  const transformedPokemones = pokemones.map(pokemon => ({
+    id: pokemon.id,
+    name: pokemon.name,
+    height: pokemon.height,
+    tipos: pokemon.Types.map(type => type.nombre),
+    image: pokemon.image,
+    vida: pokemon.hp,
+    ataque: pokemon.attack,
+    defensa: pokemon.defense,
+    velocidad: pokemon.speed,
+    weight: pokemon.weight
+  }));
   if (pokemones.length<=0) {
     return null;
   }
-  return pokemones;
+  return transformedPokemones;
 };
 
 module.exports = getCharbyBDD;

@@ -3,7 +3,6 @@ const getById = async (data) => {
   try {
     const pokemon = await EstructuradoApi(data);
     if (!pokemon) {
-      console.log(pokemon);
       return { error: "personaje no encontrado" };
     }
     return pokemon;

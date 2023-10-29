@@ -13,7 +13,6 @@ const GetAllTypes = async (req, res) => {
       await Type.findOrCreate({ where: { nombre: resultados[i].name } });
     }
     const PokeTypes = await Type.findAll();
-    console.log(PokeTypes);
     res.status(200).json(PokeTypes);
   } catch (error) {
     console.error(error);

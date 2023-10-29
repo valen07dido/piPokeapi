@@ -9,11 +9,10 @@ const homeApi = async (array) => {
       axios.get(pokemon.url)
     );
     let respuestas = await Promise.all(promesas);
-    let datosFormateados = respuestas.map((respuesta) =>
+    let datosEstructurados = respuestas.map((respuesta) =>
       EstructuradoApi(respuesta.data)
     );
-    console.log(datosFormateados);
-    return datosFormateados;
+    return datosEstructurados;
   } catch (error) {
     console.error(error);
   }

@@ -1,10 +1,9 @@
 function EstructuradoApi(data) {
   const { id, name, height, types, sprites, stats, weight } = data;
   // const img = sprites.other["official-artwork"].front_default
-  const img = sprites.other.home.front_default;
+  const image = sprites.other.home.front_default;
   const tipos = [];
   types.forEach((type) => {
-    console.log(type);
     tipos.push(type.type.name);
   });
   let estadisticas = stats.reduce((obj, estadistica) => {
@@ -20,7 +19,7 @@ function EstructuradoApi(data) {
     name,
     height,
     tipos,
-    img,
+    image,
     vida,
     ataque,
     defensa,
