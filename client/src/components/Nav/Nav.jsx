@@ -15,10 +15,13 @@ const Nav = () => {
       {active ? (
         <div>
           <Link to="/home">
-            <button>Inicio</button>
+            <button onClick={handlerActive} >Inicio</button>
           </Link>
           <Link to={"/create"}>
-            <button>Crear pokemon</button>
+            <button onClick={handlerActive}>Crear pokemon</button>
+          </Link>
+          <Link to={"/myPokemons"}>
+            <button onClick={handlerActive}>Mis Pokemons </button>
           </Link>
         </div>
       ) : null}

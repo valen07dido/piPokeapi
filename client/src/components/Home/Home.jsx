@@ -16,9 +16,9 @@ const Home = () => {
   useEffect(() => {
     dispatch(addChar());
   }, [dispatch]);
-//guarda los characters en datos para poder hacer el paginado
+  //guarda los characters en datos para poder hacer el paginadov
   useEffect(() => {
-    if (Pokemons.length > 0) {
+    if (Pokemons && Pokemons.length > 0) {
       setDatos([...Pokemons].splice(0, itemsForPage));
     }
   }, [Pokemons]);
@@ -42,7 +42,7 @@ const Home = () => {
 
   return (
     <div>
-      {Pokemons.length > 0 ? (
+      {Pokemons && Pokemons.length > 0 ? (
         <Cards
           Pokemons={datos}
           handlerNext={handlerNext}

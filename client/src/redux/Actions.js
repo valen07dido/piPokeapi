@@ -17,8 +17,8 @@ export const addChar = () => {
 export const getById = (id) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`http://localhost:3001/pokemon/${id}`);
-      console.log('se busca por id');
+      const { data } = await axios.get(`${URL}${id}`);
+      console.log("se busca por id");
       dispatch({
         type: "GET_BY_ID",
         payload: data,
@@ -31,9 +31,9 @@ export const getById = (id) => {
 export const getByName = (name) => {
   return async (dispatch) => {
     try {
-      console.log(name)
-      const { data } = await axios.get(`http://localhost:3001/pokemon/?name=${name}`);
-      console.log('se busca por name');
+      console.log(name);
+      const { data } = await axios.get(`${URL}?name=${name}`);
+      console.log("se busca por name");
 
       dispatch({
         type: "GET_BY_NAME",
@@ -41,6 +41,57 @@ export const getByName = (name) => {
       });
     } catch (error) {
       console.log(error.message);
+    }
+  };
+};
+export const clearChar = () => {
+  return (dispatch) => {
+    try {
+      dispatch({
+        type: "CLEAR_CHAR",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const createChar = (datos) => {
+  return async (dispatch) => {
+    const { data } = await axios.post(URL, datos);
+    try {
+      dispatch({
+        type: "CREATE_CHAR",
+        payload: data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const DeleteChar = (id) => {
+  return async (dispatch) => {
+    await axios.delete(`${URL}${id}`);
+    try {
+      dispatch({
+        type: "DELETE_CHAR",
+        payload: id,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const CreatedPokemons = () => {
+  return async (dispatch) => {
+    const { data } = await axios.get(`${URL}myPokemons`);
+    console.log(data)
+    try {
+      dispatch({
+        type: "CREATED_POKEMONS",
+        payload: data,
+      });
+    } catch (error) {
+      console.log(error);
     }
   };
 };
