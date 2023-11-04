@@ -11,9 +11,22 @@ const GetbyNameBDD = async (nombre) => {
           },
         ],
       });
-  
+      const transformedPokemones = pokeDato.map(pokemon => ({
+        id: pokemon.id,
+        name: pokemon.name,
+        height: pokemon.height,
+        tipos: pokemon.Types.map(type => type.nombre),
+        image: pokemon.image,
+        vida: pokemon.hp,
+        ataque: pokemon.attack,
+        defensa: pokemon.defense,
+        velocidad: pokemon.speed,
+        weight: pokemon.weight
+      }));
+      console.log(transformedPokemones)
+      
       if (pokeDato && pokeDato.length > 0) {
-        return pokeDato;
+        return transformedPokemones[0];
       } else {
         throw new Error("No se encontró ningún Pokémon con ese nombre.");
       }

@@ -10,10 +10,22 @@ const GetPokemonById = async (req, res) => {
     if (id.length > 5) {
       try {
         const pokemon = await Pokemon.findByPk(id);
-        if (!pokemon) {
+        const transformedPokemones = {
+          id: pokemon.id,
+          name: pokemon.name,
+          height: pokemon.height,
+          tipos: pokemon.Types,
+          image: pokemon.image,
+          vida: pokemon.hp,
+          ataque: pokemon.attack,
+          defensa: pokemon.defense,
+          velocidad: pokemon.speed,
+          weight: pokemon.weight
+        };
+        if (!transformedPokemones) {
           return res.status(404).json({ error: "Pokemon no encontrado" });
         }
-        return res.status(200).json(pokemon);
+        return res.status(200).json(transformedPokemones);
       } catch (dbError) {
         return res.status(500).json({ error: dbError.message });
       }
