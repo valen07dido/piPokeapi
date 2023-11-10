@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../Card/CArd";
 
 const Cards = (props) => {
-  const { Pokemons,handlerPrev,handlerNext } =props
+  const { Pokemons, handlerPrev, handlerNext,deletePoke } = props;
   return (
     <div>
       <button onClick={handlerPrev}>prev</button>
@@ -15,6 +15,7 @@ const Cards = (props) => {
             name={pokemon.name}
             image={pokemon.image}
             tipos={pokemon.tipos}
+            deletePoke={deletePoke}
           />
         );
       })}

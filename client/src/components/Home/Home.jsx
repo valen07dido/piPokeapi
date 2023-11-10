@@ -1,27 +1,43 @@
 import React, { useEffect, useState } from "react";
 import Cards from "../Cards/Cards";
 import { useDispatch, useSelector } from "react-redux";
-import { addChar } from "../../redux/Actions";
+import { ChangeAux, DeleteChar, GetTypes, addChar } from "../../redux/Actions";
 
 const URL = import.meta.env.VITE_URL;
 const itemsForPage = 12;
 
 const Home = () => {
   const dispatch = useDispatch();
-  const Pokemons = useSelector((state) => state.Pokemones);
+  let Pokemons = useSelector((state) => state.Pokemones);
+  const aux = useSelector((state) => state.aux);
   const [datos, setDatos] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const filtrado = useSelector((state) => state.PokemonesCopy);
 
+
+  if (filtrado !== null && filtrado.length > 0) {
+    Pokemons = filtrado;
+    console.log(filtrado);
+  }
   // trae los personajes
   useEffect(() => {
     dispatch(addChar());
+    dispatch(GetTypes());
+    console.log("se hizo dispatch");
   }, [dispatch]);
-  //guarda los characters en datos para poder hacer el paginadov
+
+  //guarda los characters en datos para poder hacer el paginado
+
   useEffect(() => {
     if (Pokemons && Pokemons.length > 0) {
-      setDatos([...Pokemons].splice(0, itemsForPage));
+      setDatos([...Pokemons].slice(0, itemsForPage));
     }
-  }, [Pokemons]);
+    console.log('me ejecute');
+  }, [filtrado, Pokemons]);
+
+  const deletePoke = (id) => {
+    dispatch(DeleteChar(id));
+  };
 
   const handlerNext = () => {
     const totalElements = Pokemons.length;
@@ -31,7 +47,6 @@ const Home = () => {
     setDatos([...Pokemons].slice(firstIndex, firstIndex + itemsForPage));
     setCurrentPage(nextPage);
   };
-
   const handlerPrev = () => {
     const prevPage = currentPage - 1;
     const firstIndex = prevPage * itemsForPage;
@@ -47,6 +62,7 @@ const Home = () => {
           Pokemons={datos}
           handlerNext={handlerNext}
           handlerPrev={handlerPrev}
+          deletePoke={deletePoke}
         />
       ) : (
         <h2>cargando</h2>

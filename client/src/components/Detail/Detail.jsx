@@ -17,24 +17,25 @@ const Detail = () => {
     }
   }, []);
   return <div>
-    {Pokemon?(
+    {Pokemon&&Pokemon.length!==0?(
         <div>
 
-        <h3>{Pokemon.id}</h3>
-        <h3>{Pokemon.name}</h3>
+        <h3>ID:{Pokemon.id}</h3>
+        <h3>Nombre:{Pokemon.name}</h3>
         <img src={Pokemon.image} alt={Pokemon.name} />
-        <h3>{Pokemon.vida}</h3>
-        <h3>{Pokemon.ataque}</h3>
-        <h3>{Pokemon.defensa}</h3>
-        <h3>{Pokemon.velocidad}</h3>
-        <h3>{Pokemon.altura}</h3>
-        <h3>{`${Pokemon.weight}kg`}</h3>
+        <h3>Nivel de vida:{Pokemon.vida}</h3>
+        <h3>Poder de ataque:{Pokemon.ataque}</h3>
+        <h3>Nivel de defensa:{Pokemon.defensa}</h3>
+        <h3>Nivel de velocidad:{Pokemon.velocidad}</h3>
+        <h3>Altura:{Pokemon.height}</h3>
+        <h3>Peso:{Pokemon.weight}</h3>
         {Pokemon.tipos&&Pokemon.tipos.map((tipo, index) => {
-        return <h3 key={index}>{tipo}</h3>;
+        return <h3 key={index}>Tipo:{tipo}</h3>
       })}
         </div>
-    ):console.log('si')}
-  </div>;
-};
+    ):<h2>cargando...</h2>}
+    </div>
+}
+
 
 export default Detail;

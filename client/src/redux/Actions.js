@@ -84,7 +84,7 @@ export const DeleteChar = (id) => {
 export const CreatedPokemons = () => {
   return async (dispatch) => {
     const { data } = await axios.get(`${URL}myPokemons`);
-    console.log(data)
+    console.log(data);
     try {
       dispatch({
         type: "CREATED_POKEMONS",
@@ -93,5 +93,47 @@ export const CreatedPokemons = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+};
+export const GetTypes = () => {
+  return async (dispatch) => {
+    const { data } = await axios.get(`${URL}types`);
+    try {
+      dispatch({
+        type: "GET_TYPES",
+        payload: data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const filterType = (type) => {
+  return {
+    type: "FILTER_TYPE",
+    payload: type,
+  };
+};
+export const filterBddApi = (value) => {
+  return {
+    type: "FILTER_BDD_API",
+    payload: value,
+  };
+};
+export const OrderAlpha = (value) => {
+  return {
+    type: "ORDER_ALPHABET",
+    payload: value,
+  };
+};
+export const OrderAttacks = (value) => {
+  return {
+    type: "ORDER_ATTACKS",
+    payload: value,
+  };
+};
+export const ChangeAux = () => {
+  return {
+    type: "CHANGE_AUX",
   };
 };
