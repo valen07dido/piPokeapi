@@ -1,4 +1,4 @@
-const initialstate = {
+export const initialstate = {
   Pokemones: [],
   SearchPokemon: [],
   PokemonCreated: [],
