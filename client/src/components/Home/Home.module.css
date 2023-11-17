@@ -1,0 +1,21 @@
+.container{
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.loading{
+    margin-top: 200px;
+    margin-left: 550px;
+    width: 250px;
+    height: 250px;
+}
+.text{
+    background-color: white;
+    text-align: center;
+    width: 150px;
+    height: 20px;
+    border-radius: 10px;
+    border: solid 3px black;
+    padding: 5px;
+    margin-left: 600px;
+}

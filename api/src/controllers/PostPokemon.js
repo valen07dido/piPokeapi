@@ -1,7 +1,7 @@
 const { Pokemon, Type } = require("../db");
 
 const PostPokemon = async (req, res) => {
-  const { name, height, type, hp, attack, defense, speed, weight } = req.body;
+  const { name, height, type, hp, attack, defense, speed, weight,image } = req.body;
 
   if (
     !name ||
@@ -18,7 +18,7 @@ const PostPokemon = async (req, res) => {
   try {
     const [pokemon, created] = await Pokemon.findOrCreate({
       where: { name },
-      defaults: { height, hp, attack, defense, speed, weight },
+      defaults: { height, hp, attack, defense, speed, weight,image },
     });
     if (created) {
       if (Array.isArray(type)) {

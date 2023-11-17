@@ -17,7 +17,7 @@ const rootReducer = (state = initialstate, { type, payload }) => {
     case "CLEAR_CHAR":
       return { ...state, SearchPokemon: [] };
     case "CREATE_CHAR":
-      return { ...state, PokemonCreated: [...state.PokemonCreated, payload] };
+      return { ...state, PokemonCreated: [...state.PokemonCreated, payload],PokemonesCopy:[...state.PokemonesCopy,payload] };
     case "DELETE_CHAR":
       return {
         ...state,
@@ -25,6 +25,9 @@ const rootReducer = (state = initialstate, { type, payload }) => {
         PokemonCreated: state.PokemonCreated.filter(
           (pokemon) => pokemon.id !== payload
         ),
+        PokemonesCopy: state.PokemonesCopy.filter(
+          (pokemon) => pokemon.id !== payload
+        )
       };
     case "CREATED_POKEMONS":
       return { ...state, PokemonCreated: payload };

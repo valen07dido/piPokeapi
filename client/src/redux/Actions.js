@@ -18,7 +18,6 @@ export const getById = (id) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`${URL}${id}`);
-      console.log("se busca por id");
       dispatch({
         type: "GET_BY_ID",
         payload: data,
@@ -31,9 +30,7 @@ export const getById = (id) => {
 export const getByName = (name) => {
   return async (dispatch) => {
     try {
-      console.log(name);
       const { data } = await axios.get(`${URL}?name=${name}`);
-      console.log("se busca por name");
 
       dispatch({
         type: "GET_BY_NAME",
@@ -84,7 +81,6 @@ export const DeleteChar = (id) => {
 export const CreatedPokemons = () => {
   return async (dispatch) => {
     const { data } = await axios.get(`${URL}myPokemons`);
-    console.log(data);
     try {
       dispatch({
         type: "CREATED_POKEMONS",

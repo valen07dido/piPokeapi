@@ -1,0 +1,45 @@
+.container {
+  text-align: center;
+  justify-content: space-around;
+/* 
+  background-image: url("./img/pikachuLanding.png");
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain; */
+}
+.titulo {
+  color: rgb(0, 0, 0);
+  border-radius: 20px;
+  font-size: xx-large;
+  font-weight: bold;
+}
+.header {
+  height: 230px;
+  width: 550px;
+}
+.pokebola {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 2s;
+  width: 150px;
+  height: 150px;
+}
+.pokebola:hover {
+  transform: translateY(-10px);
+}
+.pikachu {
+  position: absolute;
+  right: 0;
+  top: 400px;
+  width: 400px;
+  height: 300px;
+}

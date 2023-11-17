@@ -23,7 +23,6 @@ const GetbyNameBDD = async (nombre) => {
         velocidad: pokemon.speed,
         weight: pokemon.weight
       }));
-      console.log(transformedPokemones)
       
       if (pokeDato && pokeDato.length > 0) {
         return transformedPokemones[0];

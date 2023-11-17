@@ -15,7 +15,6 @@ const GetAllTypes = async (req, res) => {
     const PokeTypes = await Type.findAll();
     res.status(200).json(PokeTypes);
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: error.message });
   }
 };

@@ -11,7 +11,6 @@ const getBynameAPI = async (nombre) => {
       return pokemon;
     } 
   } catch (error) {
-    console.log(error.message)
     return null
   }
 };

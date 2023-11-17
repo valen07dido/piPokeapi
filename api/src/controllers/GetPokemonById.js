@@ -2,14 +2,22 @@ require("dotenv").config();
 const { GET } = process.env;
 const axios = require("axios");
 const getById = require("./auxiliares/getByIdAPI");
-const { Pokemon } = require("../db");
+const { Pokemon, Type } = require("../db");
 
 const GetPokemonById = async (req, res) => {
   try {
     const { id } = req.params;
     if (id.length > 5) {
       try {
-        const pokemon = await Pokemon.findByPk(id);
+        const pokemon = await Pokemon.findByPk(id, {
+          include: [
+            {
+              model: Type,
+              attributes: ["nombre"],
+              through: { attributes: [] },
+            },
+          ],
+        });
         const transformedPokemones = {
           id: pokemon.id,
           name: pokemon.name,

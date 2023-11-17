@@ -1,43 +1,39 @@
 import React, { useEffect, useState } from "react";
 import Cards from "../Cards/Cards";
 import { useDispatch, useSelector } from "react-redux";
-import { ChangeAux, DeleteChar, GetTypes, addChar } from "../../redux/Actions";
-
+import { ChangeAux, GetTypes, addChar } from "../../redux/Actions";
+import loading from "./img/loading.gif";
+import styles from "./Home.module.css";
 const URL = import.meta.env.VITE_URL;
 const itemsForPage = 12;
 
 const Home = () => {
   const dispatch = useDispatch();
   let Pokemons = useSelector((state) => state.Pokemones);
+  const PokemonesCreados = useSelector((state) => state.PokemonCreated);
   const aux = useSelector((state) => state.aux);
   const [datos, setDatos] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const filtrado = useSelector((state) => state.PokemonesCopy);
-
 
   if (filtrado !== null && filtrado.length > 0) {
     Pokemons = filtrado;
-    console.log(filtrado);
   }
   // trae los personajes
   useEffect(() => {
+    console.log('me ejecute')
     dispatch(addChar());
     dispatch(GetTypes());
-    console.log("se hizo dispatch");
   }, [dispatch]);
 
   //guarda los characters en datos para poder hacer el paginado
 
   useEffect(() => {
+    console.log('me ejecute 2')
     if (Pokemons && Pokemons.length > 0) {
       setDatos([...Pokemons].slice(0, itemsForPage));
     }
-    console.log('me ejecute');
-  }, [filtrado, Pokemons]);
-
-  const deletePoke = (id) => {
-    dispatch(DeleteChar(id));
-  };
+  }, [Pokemons]);
 
   const handlerNext = () => {
     const totalElements = Pokemons.length;
@@ -62,10 +58,12 @@ const Home = () => {
           Pokemons={datos}
           handlerNext={handlerNext}
           handlerPrev={handlerPrev}
-          deletePoke={deletePoke}
         />
       ) : (
-        <h2>cargando</h2>
+        <div className={styles.container}>
+          <img src={loading} alt="cargando..." className={styles.loading} />
+          <h3 className={styles.text}>Cargando...</h3>
+        </div>
       )}
     </div>
   );

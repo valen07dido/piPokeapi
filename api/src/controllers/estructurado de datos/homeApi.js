@@ -14,7 +14,6 @@ const homeApi = async (array) => {
     );
     return datosEstructurados;
   } catch (error) {
-    console.error(error);
   }
 };
 
