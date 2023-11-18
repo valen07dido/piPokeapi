@@ -26,6 +26,7 @@ const Detail = () => {
       dispatch(clearChar());
     };
   }, []);
+  console.log(Pokemon)
   return (
     <div className={styles.mainContainer}>
       {Number(Pokemon.id) ? null : (
@@ -66,7 +67,7 @@ const Detail = () => {
             {Pokemon.tipos &&
               Pokemon.tipos.map((tipo, index) => (
                 <h3 key={index} className={styles.tipo}>
-                  Tipo: {tipo.nombre}
+                  Tipo: {tipo}
                 </h3>
               ))}
           </div>

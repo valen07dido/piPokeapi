@@ -133,3 +133,8 @@ export const ChangeAux = () => {
     type: "CHANGE_AUX",
   };
 };
+export const ClearFilters = () => {
+  return {
+    type: "CLEAR_FILTERS",
+  };
+};

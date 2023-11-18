@@ -13,7 +13,7 @@ const GetPokemonById = async (req, res) => {
           include: [
             {
               model: Type,
-              attributes: ["nombre"],
+              attributes: [ "nombre"],
               through: { attributes: [] },
             },
           ],
@@ -22,7 +22,7 @@ const GetPokemonById = async (req, res) => {
           id: pokemon.id,
           name: pokemon.name,
           height: pokemon.height,
-          tipos: pokemon.Types,
+          tipos: pokemon.Types.map(type => type.nombre),
           image: pokemon.image,
           vida: pokemon.hp,
           ataque: pokemon.attack,
@@ -40,7 +40,7 @@ const GetPokemonById = async (req, res) => {
     } else {
       const { data } = await axios(`${GET}${id}`);
       const pokemon= await getById(data)
-     
+     console.log(pokemon)
 
       if (!pokemon) {
         return res.status(404).json({ error: "personaje no encontrado" });

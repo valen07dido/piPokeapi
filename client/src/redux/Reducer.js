@@ -87,6 +87,11 @@ const rootReducer = (state = initialstate, { type, payload }) => {
           ...state,
           aux: !state.aux
         }
+        case 'CLEAR_FILTERS':
+          return{
+            ...state,
+            PokemonesCopy:state.Pokemones,
+          }
     default:
       return {
         ...state,

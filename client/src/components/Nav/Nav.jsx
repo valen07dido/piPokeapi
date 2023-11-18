@@ -7,6 +7,7 @@ import {
   filterBddApi,
   filterType,
   ChangeAux,
+  ClearFilters,
 } from "../../redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
@@ -22,7 +23,9 @@ const Nav = () => {
     const handlerActive = () => {
       setIsOpen(!isOpen);
     };
-
+    const cleanFilters=()=>{
+      dispatch(ClearFilters())
+    }
 
   const handleFilter = (event) => {
     dispatch(filterType(event.target.value));
@@ -68,6 +71,9 @@ const Nav = () => {
                   Crear pokemon
                 </button>
               </Link>
+                <button onClick={()=>{cleanFilters()}} className={styles.button}>
+                  limpiar filtros
+                </button>
             {pathname === "/home" && (
               <div className={styles.Contentselects}>
                 <select onChange={handleFilter} className={styles.selects}> 
