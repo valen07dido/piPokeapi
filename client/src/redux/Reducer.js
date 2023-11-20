@@ -4,7 +4,7 @@ export const initialstate = {
   PokemonCreated: [],
   PokemonesCopy: [],
   Tipos: [],
-  aux:true
+  aux: true,
 };
 const rootReducer = (state = initialstate, { type, payload }) => {
   switch (type) {
@@ -17,7 +17,11 @@ const rootReducer = (state = initialstate, { type, payload }) => {
     case "CLEAR_CHAR":
       return { ...state, SearchPokemon: [] };
     case "CREATE_CHAR":
-      return { ...state, PokemonCreated: [...state.PokemonCreated, payload],PokemonesCopy:[...state.PokemonesCopy,payload] };
+      return {
+        ...state,
+        PokemonCreated: [...state.PokemonCreated, payload],
+        PokemonesCopy: [...state.PokemonesCopy, payload],
+      };
     case "DELETE_CHAR":
       return {
         ...state,
@@ -27,7 +31,7 @@ const rootReducer = (state = initialstate, { type, payload }) => {
         ),
         PokemonesCopy: state.PokemonesCopy.filter(
           (pokemon) => pokemon.id !== payload
-        )
+        ),
       };
     case "CREATED_POKEMONS":
       return { ...state, PokemonCreated: payload };
@@ -35,6 +39,7 @@ const rootReducer = (state = initialstate, { type, payload }) => {
       return { ...state, Tipos: payload };
     case "FILTER_TYPE":
       let copy = state.Pokemones.filter((poke) => poke.tipos.includes(payload));
+     
       return {
         ...state,
         PokemonesCopy: copy,
@@ -72,9 +77,9 @@ const rootReducer = (state = initialstate, { type, payload }) => {
     case "ORDER_ATTACKS":
       let copy4 = [...state.Pokemones];
       if (payload === "D") {
-        copy4.sort((a, b) => a.ataque-(b.ataque));
+        copy4.sort((a, b) => a.ataque - b.ataque);
       } else if (payload === "A") {
-        copy4.sort((a, b) => b.ataque-(a.ataque));
+        copy4.sort((a, b) => b.ataque - a.ataque);
       } else {
         copy4 = null;
       }
@@ -82,16 +87,16 @@ const rootReducer = (state = initialstate, { type, payload }) => {
         ...state,
         PokemonesCopy: copy4,
       };
-      case 'CHANGE_AUX':
-        return{
-          ...state,
-          aux: !state.aux
-        }
-        case 'CLEAR_FILTERS':
-          return{
-            ...state,
-            PokemonesCopy:state.Pokemones,
-          }
+    case "CHANGE_AUX":
+      return {
+        ...state,
+        aux: !state.aux,
+      };
+    case "CLEAR_FILTERS":
+      return {
+        ...state,
+        PokemonesCopy: state.Pokemones,
+      };
     default:
       return {
         ...state,

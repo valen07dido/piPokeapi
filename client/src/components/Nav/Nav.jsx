@@ -20,33 +20,30 @@ const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { pathname } = useLocation();
 
-    const handlerActive = () => {
-      setIsOpen(!isOpen);
-    };
-    const cleanFilters=()=>{
-      dispatch(ClearFilters())
-    }
+  const handlerActive = () => {
+    setIsOpen(!isOpen);
+  };
+  const cleanFilters = () => {
+    dispatch(ClearFilters());
+  };
 
   const handleFilter = (event) => {
     dispatch(filterType(event.target.value));
-    setIsOpen(!isOpen)
+    setIsOpen(!isOpen);
   };
   const filterBDDapi = (event) => {
     dispatch(filterBddApi(event.target.value));
-    setIsOpen(!isOpen)
-
+    setIsOpen(!isOpen);
   };
   const OrderByAlpha = (event) => {
     dispatch(OrderAlpha(event.target.value));
     dispatch(ChangeAux());
-    setIsOpen(!isOpen)
-
+    setIsOpen(!isOpen);
   };
   const OrderByAttack = (event) => {
     dispatch(OrderAttacks(event.target.value));
     dispatch(ChangeAux());
-    setIsOpen(!isOpen)
-
+    setIsOpen(!isOpen);
   };
   return (
     <div>
@@ -56,7 +53,7 @@ const Nav = () => {
             <img
               src={logo}
               alt="inicio"
-              onClick={()=>{handlerActive()}}
+              onClick={() => {}}
               className={styles.inicio}
             />
           </Link>
@@ -65,18 +62,24 @@ const Nav = () => {
           </button>
         </div>
         {isOpen ? (
-          <div  className={`${styles.desplegado} ${isOpen ? 'open' : ''}`}>
-              <Link to={"/create"}>
-                <button onClick={handlerActive} className={styles.button}>
-                  Crear pokemon
-                </button>
-              </Link>
-                <button onClick={()=>{cleanFilters()}} className={styles.button}>
-                  limpiar filtros
-                </button>
+          <div className={`${styles.desplegado} ${isOpen ? "open" : ""}`}>
+            <Link to={"/create"}>
+              <button onClick={handlerActive} className={styles.button}>
+                Crear pokemon
+              </button>
+            </Link>
+
             {pathname === "/home" && (
               <div className={styles.Contentselects}>
-                <select onChange={handleFilter} className={styles.selects}> 
+                <button
+                  onClick={() => {
+                    cleanFilters();
+                  }}
+                  className={styles.button}
+                >
+                  limpiar filtros
+                </button>
+                <select onChange={handleFilter} className={styles.selects}>
                   <option value="">Filtrar por Tipo</option>
                   {Tipos.map((tipo) => (
                     <option key={tipo.id} value={tipo.nombre}>

@@ -40,7 +40,6 @@ const GetPokemonById = async (req, res) => {
     } else {
       const { data } = await axios(`${GET}${id}`);
       const pokemon= await getById(data)
-     console.log(pokemon)
 
       if (!pokemon) {
         return res.status(404).json({ error: "personaje no encontrado" });

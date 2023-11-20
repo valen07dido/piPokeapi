@@ -26,7 +26,6 @@ const Detail = () => {
       dispatch(clearChar());
     };
   }, []);
-  console.log(Pokemon)
   return (
     <div className={styles.mainContainer}>
       {Number(Pokemon.id) ? null : (
