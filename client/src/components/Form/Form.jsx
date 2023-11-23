@@ -44,7 +44,8 @@ const Form = () => {
 
     if (Object.keys(errors).length === 0) {
       dispatch(createChar(Pokemon));
-      navigate('/create')
+      window.alert('pokemon creado exitosamente')
+      navigate('/home')
       setPokemon({
         name: "",
         height: "",
