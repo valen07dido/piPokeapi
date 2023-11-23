@@ -38,3 +38,43 @@
  
 
 }
+@media (max-width: 1250px){
+  .container {
+    margin: 7.5px 7.5px 7.5px 7.5px;
+    background-image: url("./img/fondoCard2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 150px;
+    height: 300px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+  }
+  .textContainer {
+    margin: 10px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 140px;
+  
+  }
+  .imagen {
+    background-color: white;
+    border: 1px solid black;
+    width: 145px;
+    height: 145px;
+    border-radius: 7.5px;
+    margin: 0px 0px 0px 2.5px;
+  }
+  .text {
+    color: rgb(0, 0, 0);
+    font-size: small;
+    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+    text-align: center;
+    position: relative;
+    margin: 10px;
+  }
+}

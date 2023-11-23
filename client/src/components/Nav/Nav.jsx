@@ -87,8 +87,9 @@ const Nav = () => {
                     </option>
                   ))}
                 </select>
-                <select onChange={filterBDDapi} className={styles.selects}>
-                  <option value="">Filtrar por origen</option>
+                <select onChange={filterBDDapi} className={styles.selects}  name=""
+          id="">
+                  {/* <option value="">Filtrar por origen</option> */}
                   <option value="BDD">Creados</option>
                   <option value="api">Existentes</option>
                 </select>

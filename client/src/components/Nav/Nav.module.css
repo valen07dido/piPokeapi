@@ -84,3 +84,15 @@
   font-size: large;
   font-weight: bold;
 }
+@media (max-width: 1250px){
+  .inicio {
+    margin: 10px;
+    width: 100px;
+    cursor: pointer;
+    transition: all 2s ease;
+  }
+  .desplegado{
+  background-color: blue;
+
+  }
+}

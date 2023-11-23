@@ -6,19 +6,22 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useNavigate } from "react-router";
 import styles from "./Detail.module.css";
 
-
 const Detail = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   const id = pathname.split("/").pop();
   const dispatch = useDispatch();
   let Pokemon = useSelector((state) => state.SearchPokemon);
 
   const deletePoke = (id) => {
-    dispatch(DeleteChar(id));
-    dispatch(ChangeAux())
-    navigate('/home')
-    window.alert('personaje eliminado exitosamente')
+    try {
+      dispatch(DeleteChar(id));
+      dispatch(ChangeAux());
+      navigate("/home");
+      window.alert("personaje eliminado exitosamente");
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   useEffect(() => {
     dispatch(getById(id));
@@ -29,7 +32,10 @@ const Detail = () => {
   return (
     <div className={styles.mainContainer}>
       {Number(Pokemon.id) ? null : (
-        <button className={styles.deleteButton} onClick={() => deletePoke(Pokemon.id)}>
+        <button
+          className={styles.deleteButton}
+          onClick={() => deletePoke(Pokemon.id)}
+        >
           Eliminar Pokemon
         </button>
       )}
