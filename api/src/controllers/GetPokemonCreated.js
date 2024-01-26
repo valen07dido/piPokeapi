@@ -1,4 +1,4 @@
-const getCharbyBDD = require('./auxiliares/getCharbyBDD')
+ const getCharbyBDD = require('./auxiliares/getCharbyBDD')
 const GetPokemonCreated=async(req,res)=>{
 try {
     const pokemons= await getCharbyBDD()

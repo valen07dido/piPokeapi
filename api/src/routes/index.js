@@ -7,6 +7,7 @@ const PostPokemon=require('../controllers/PostPokemon')
 const GetAllTypes=require('../controllers/GetAllTypes')
 const DeletePokemonBDD=require('../controllers/DeletePokemonBDD')
 const GetPokemonCreated=require('../controllers/GetPokemonCreated')
+const PostType=require('../controllers/PostTypes')
 const router = Router();
 
 // Configurar los routers
@@ -18,6 +19,7 @@ router.get('/myPokemons',GetPokemonCreated)
 router.get('/:id',GetPokemonById)
 router.post('/',PostPokemon)
 router.delete('/:id',DeletePokemonBDD)
+router.post('/types',PostType)
 
 
 

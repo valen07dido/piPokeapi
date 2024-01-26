@@ -172,13 +172,14 @@ const Form = () => {
             ):(<p>{errors.e16}</p>)
         }
         <label htmlFor="" className={styles.etiqueta}>tipos:</label>
+        
         <input
           type="text"
           onChange={handleChange}
           value={Pokemon.type}
           name="type"
           className={styles.text}
-          placeholder=' uno o dos tipos ej:"agua,fuego"'
+          placeholder='tipos ej:"agua,fuego"'
 
         />
         {
