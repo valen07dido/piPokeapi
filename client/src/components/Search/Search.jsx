@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import Card from "../Card/CArd.jsx";
+import Card from "../Card/Card.jsx";
 import styles from './Search.module.css'
 const Search = () => {
   const Pokemon = useSelector((state) => state.SearchPokemon);
