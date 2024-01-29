@@ -23,7 +23,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(addChar());
     dispatch(GetTypes());
-  }, [dispatch]);
+  }, []);
 
   const paginado = (pageNumber) => {
     setPaginaActual(pageNumber);

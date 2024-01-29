@@ -4,12 +4,12 @@
     align-items: center;
     justify-content:center;
     cursor: pointer;
-    background-color: rgba(0, 0, 255, 0.7);
     color: white;
 }
 .number{
     margin: 20px;
-    background-color: yellow;
+    border: 1px solid blue  ;
+    background: rgba(255, 255, 0, 0.2);
     width: 30px;
     height: 30px;
     padding-top: 5px;
@@ -20,8 +20,7 @@
     border-radius: 10px;
 }
 .actual{
-    background: linear-gradient(270deg, rgb(255, 255, 104), white);
-
+  background: yellow;
 }
 .button{
     margin: 10px;

@@ -29,40 +29,37 @@ const Nav = () => {
 
   const handleFilter = (event) => {
     dispatch(filterType(event.target.value));
-    setIsOpen(!isOpen);
   };
   const filterBDDapi = (event) => {
     dispatch(filterBddApi(event.target.value));
-    setIsOpen(!isOpen);
   };
   const OrderByAlpha = (event) => {
     dispatch(OrderAlpha(event.target.value));
     dispatch(ChangeAux());
-    setIsOpen(!isOpen);
   };
   const OrderByAttack = (event) => {
     dispatch(OrderAttacks(event.target.value));
     dispatch(ChangeAux());
-    setIsOpen(!isOpen);
   };
   return (
-    <div>
+    <div className={isOpen?styles.generalContentOpen:styles.generalContent}>
       <div className={styles.content}>
         <div className={styles.contentButtons}>
-          <Link to="/home">
-            <img
-              src={logo}
-              alt="inicio"
-              onClick={() => {}}
-              className={styles.inicio}
-            />
-          </Link>
-          <button onClick={handlerActive} className={styles.menu}>
-            ≡
+          <button
+            onClick={handlerActive}
+            className={styles.menu}
+            title={isOpen ? "cerrar menu" : "desplegar menu"}
+          >
+            <img src={logo} alt="logo" className={styles.logo} />
           </button>
         </div>
         {isOpen ? (
-          <div className={`${styles.desplegado} ${isOpen ? "open" : ""}`}>
+          <div className={`${styles.desplegado}`}>
+            <Link to={"/home"}>
+              <button onClick={handlerActive} className={styles.button}>
+                Inicio
+              </button>
+            </Link>
             <Link to={"/create"}>
               <button onClick={handlerActive} className={styles.button}>
                 Crear pokemon
@@ -87,8 +84,12 @@ const Nav = () => {
                     </option>
                   ))}
                 </select>
-                <select onChange={filterBDDapi} className={styles.selects}  name=""
-          id="">
+                <select
+                  onChange={filterBDDapi}
+                  className={styles.selects}
+                  name=""
+                  id=""
+                >
                   <option value="">Filtrar por origen</option>
                   <option value="BDD">Creados</option>
                   <option value="api">Existentes</option>
