@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getById, getByName } from "../../redux/Actions";
 import { useDispatch } from "react-redux";
 import styles from "./Searchbar.module.css";
+
 const Searchbar = () => {
   const [valor, setValor] = useState("");
   const Dispatch = useDispatch();
@@ -10,7 +11,8 @@ const Searchbar = () => {
   const handleChange = (event) => {
     setValor(event.target.value);
   };
-  const handleSearch = (value) => {
+
+  const handleSearch = () => {
     if (!isNaN(valor)) {
       Dispatch(getById(valor));
     } else if (
@@ -18,10 +20,8 @@ const Searchbar = () => {
         valor
       )
     ) {
-
       Dispatch(getById(valor));
     } else {
-
       Dispatch(getByName(valor));
     }
   };
@@ -38,7 +38,7 @@ const Searchbar = () => {
       <Link to={"/search"}>
         <button
           onClick={() => {
-            handleSearch(valor);
+            handleSearch();
             setValor("");
           }}
           className={styles.boton}
