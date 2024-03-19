@@ -3,12 +3,11 @@
     display: flex;
     align-items: center;
     justify-content:center;
-    cursor: pointer;
-    color: white;
+    background-color: rgba(255, 255, 0, 0.438);
 }
 .number{
     margin: 20px;
-    border: 1px solid blue  ;
+    border: 1px solid rgb(0, 0, 0)  ;
     background: rgba(255, 255, 0, 0.2);
     width: 30px;
     height: 30px;
@@ -46,7 +45,6 @@
         display: flex;
         align-items: center;
         justify-content:center;
-        cursor: pointer;
         background-color: rgba(0, 0, 255, 0.7);
         color: white;
     }

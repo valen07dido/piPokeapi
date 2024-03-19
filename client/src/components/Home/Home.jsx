@@ -6,24 +6,20 @@ import loading from "./img/loading.gif";
 import styles from "./Home.module.css";
 import Paginado from "../Paginado/Paginado";
 import Footer from "../Footer/Footer";
-const URL = import.meta.env.VITE_URL;
 
 const Home = () => {
   const dispatch = useDispatch();
-  let Pokemons = useSelector((state) => state.Pokemones);
+  const Pokemons = useSelector((state) => state.PokemonesCopy.length > 0 ? state.PokemonesCopy : state.Pokemones);
   const [paginaActual, setPaginaActual] = useState(1);
-  const filtrado = useSelector((state) => state.PokemonesCopy);
-  const [itemsForPage, setItemsForPage] = useState(12);
+  const [itemsForPage] = useState(12);
   const ultimoPokemon = paginaActual * itemsForPage;
   const primerPokemon = ultimoPokemon - itemsForPage;
-  if (filtrado.length > 0) {
-    Pokemons = filtrado;
-  }
   const PokemonActual = Pokemons.slice(primerPokemon, ultimoPokemon);
+
   useEffect(() => {
     dispatch(addChar());
     dispatch(GetTypes());
-  }, []);
+  }, [dispatch]);
 
   const paginado = (pageNumber) => {
     setPaginaActual(pageNumber);
